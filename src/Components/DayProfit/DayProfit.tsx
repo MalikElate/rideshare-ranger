@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Slider } from '@material-ui/core';
-
+import WeeklyProfit
+import {Adsense} from '@ctrl/react-adsense';
 interface Props { 
   companyName: string, 
 }
@@ -8,8 +9,7 @@ interface Props {
 export const DoorDash: React.FC<Props> = (props) => {
   const [singleMiles, setSingleMiles] = useState<number>(0);
   const [singlePay, setSinglePay] = useState<number>(0);
-  const [singleAdjustedPay, setSingleAdjustedPay] = useState<any>(0);
-
+  const [singleAdjustedPay, setSingleAdjustedPay] = useState<number>(0);
   return (
     <div>
       <header>
@@ -34,10 +34,10 @@ export const DoorDash: React.FC<Props> = (props) => {
         max={30}
         value={singleMiles}
         onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {setSingleMiles(Number(value))
-          setSingleAdjustedPay(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2))
+          setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)))
         }}
         onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {setSingleMiles(Number(value))
-          setSingleAdjustedPay(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2))
+          setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)))
         }}
         valueLabelDisplay="auto"
       />
@@ -59,16 +59,19 @@ export const DoorDash: React.FC<Props> = (props) => {
         max={30}
         value={singlePay}
         onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {setSinglePay(Number(value))
-          setSingleAdjustedPay(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2))
+          setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)))
         }}
         onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {setSinglePay(Number(value))
-          setSingleAdjustedPay(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2))
+          setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)))
         }}
         valueLabelDisplay="auto"
       />
       </div>
       <p>Payout: ${singleAdjustedPay} Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
-      <script data-ad-client="ca-pub-2199692694058751" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <Adsense
+        client="ca-pub-2199692694058751"
+        slot="7259870550"
+      />
     </div>
   );
 }
