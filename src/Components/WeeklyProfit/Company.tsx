@@ -6,14 +6,17 @@ interface Props {
 }
 
 export const DoorDash: React.FC<Props> = (props) => {
-  const [singleMiles, setSingleMiles] = useState<number>(0);
-  const [singlePay, setSinglePay] = useState<number>(0);
-  const [singleAdjustedPay, setSingleAdjustedPay] = useState<any>(0);
+  function handleSingleClick() { 
+    console.log(singlePay/singleMiles); 
+  }
+  const [singleMiles, setSingleMiles] = useState<number>(0)
+  const [singlePay, setSinglePay] = useState<number>(0)
+  const [singleAdjustedPay, setSingleAdjustedPay] = useState<any>(0)
 
   return (
     <div>
       <header>
-          <h1> {props.companyName} Profit Calculator </h1>
+          <h1> {props.companyName} `Profit Calculator </h1>
       </header>
       <h2> Single delivery profit </h2>
       <p> Can't decide if a delivery is profitable? Use the {props.companyName} Calculator to find out </p>
@@ -67,8 +70,10 @@ export const DoorDash: React.FC<Props> = (props) => {
         valueLabelDisplay="auto"
       />
       </div>
-      <p>Payout: ${singleAdjustedPay} Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
-      <script data-ad-client="ca-pub-2199692694058751" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <p>payout: ${singleAdjustedPay}</p>
+      <div>
+          <button onClick={handleSingleClick}> Enter </button>
+      </div>
     </div>
   );
 }
