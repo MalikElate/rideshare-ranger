@@ -5,8 +5,8 @@ interface Props {
 }
 
 export const DoorDash: React.FC<Props> = (props) => {
-  function handleSingleClick(message: string) { 
-    console.log(singleMiles)
+  function handleSingleClick() { 
+    console.log(singlePay/singleMiles); 
   }
   const [singleMiles, setSingleMiles] = useState<number>(0)
   const [singlePay, setSinglePay] = useState<number>(0)
@@ -19,7 +19,7 @@ export const DoorDash: React.FC<Props> = (props) => {
   return (
     <div>
       <header>
-          <h1> {props.companyName}Profit Calculator </h1>
+          <h1> {props.companyName} Profit Calculator </h1>
       </header>
       <h2> Single delivery profit </h2>
       <p> Can't decide if a delivery is profitable? Use the {props.companyName} Calculator to find out </p>
@@ -35,12 +35,13 @@ export const DoorDash: React.FC<Props> = (props) => {
         <input 
           placeholder="Payout" 
           type="number" 
-          value={singleMiles || ""} 
-          onChange={(e)=>setSingleMiles(Number(e.target.value))}
+          value={singlePay || ""} 
+          onChange={(e)=>setSinglePay(Number(e.target.value))}
         />
       </div>
+      <p>payout: ${Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)}</p>
       <div>
-          <button onClick={()=>{handleSingleClick("352356236")}}> Enter </button>
+          <button onClick={handleSingleClick}> Enter </button>
       </div>
     </div>
   );
