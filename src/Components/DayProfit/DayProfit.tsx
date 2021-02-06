@@ -57,13 +57,11 @@ export const DoorDash: React.FC<Props> = (props) => {
       } else if ((9 < singleMiles) && (singleMiles <= 12)  && (singlePay > 35)){
         setSingleMessage('Worth it!');
       return "end function";
-
       } else if ((9 >= singleMiles) && (singleMiles > 12)) {
         setSingleMessage('This dash is a waste of time');
       } else if ((13 < singleMiles) && (singleMiles <= 16)  && (singlePay > 50)){
         setSingleMessage('Worth it!');
         return "end function";
-
       } else if ((13 >= singleMiles) || (singleMiles > 16)) {
         setSingleMessage('Waste of time');
       } else if (16 < singleMiles) {
@@ -71,12 +69,12 @@ export const DoorDash: React.FC<Props> = (props) => {
       }
   }
   return (
-    <div>
+    <div className="calc-body">
       <header>
-          <h1> {props.companyName} Profit Calculator </h1>
+          <h1 className="calc-h1"> {props.companyName} Profit Calculator </h1>
       </header>
-      <h2> Single delivery profit </h2>
-      <p> Can't decide if a delivery is profitable? Use the {props.companyName} Calculator to find out </p>
+      <p><i>Can't decide if a delivery is profitable? Use the {props.companyName} Calculator to find out</i></p>
+      <h1 className="calc-h2"> Single delivery profit </h1>
       <div>
           <label>mi</label>
           <input 
@@ -86,7 +84,7 @@ export const DoorDash: React.FC<Props> = (props) => {
             onChange={(e)=>setSingleMiles(Number(e.target.value))}
           />
       <Slider
-        defaultValue={0.00000005}
+        defaultValue={0}
         aria-labelledby="discrete-slider-small-steps"
         step={0.5}
         marks
@@ -115,7 +113,7 @@ export const DoorDash: React.FC<Props> = (props) => {
           onChange={(e)=>setSinglePay(Number(e.target.value))}
         />
         <Slider
-        defaultValue={0.00000005}
+        defaultValue={0}
         aria-labelledby="discrete-slider-small-steps"
         step={0.5}
         marks
@@ -134,9 +132,14 @@ export const DoorDash: React.FC<Props> = (props) => {
         }}
         valueLabelDisplay="auto"
       />
+      </div> 
+      <div>
+        <p>{singleMessage}</p>
       </div>
-      <p>singlePay: ${singleAdjustedPay} Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
-      <p>{singleMessage}</p>
+      <div>
+        <p>singlePay: ${singleAdjustedPay}</p>
+      </div>
+        <p> Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
       <WeeklyProfit singleProfits={singleAdjustedPay}/>
     </div>
   );

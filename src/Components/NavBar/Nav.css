@@ -1,11 +1,24 @@
 .nav-header { 
     background-color: orange; 
-    padding: 30px;
+    display: flex;
+    width: 100%; 
+    flex-direction: row;
+    justify-content: space-between; 
+}
+
+.nav-logo { 
+    height: 90px
+}
+
+.links-span { 
+    align-items: 'right'; 
+    display: 'inline-block';
+    margin-left: 30vw;
 }
 
 .nav-link {
     display: inline;
-    margin-left: 10px;
+    margin-left: 5px;
     color: black; 
     text-decoration: none;
 }
