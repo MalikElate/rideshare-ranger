@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Slider } from '@material-ui/core';
 import { WeeklyProfit } from "../WeeklyProfit/WeeklyProfit"; 
+import { DailyProfitHeader } from './DayProfitHeader'; 
 
 interface Props { 
   companyName: string, 
@@ -72,74 +73,72 @@ export const DoorDash: React.FC<Props> = (props) => {
   }
   return (
     <div className="calc-page">
-      <div className="calc-headers">
-        <header>
-          <h1 className="calc-h1"> {props.companyName} Profit Calculator </h1>
-        </header>
-        <p><i>Can't decide if a delivery is profitable? Use the {props.companyName} Calculator to find out</i></p>
-      </div>
+      <DailyProfitHeader companyName={props.companyName}/>      
       <div className="calc-body">
-      <h1 className="calc-h2"> Single delivery profit </h1>
-        <div>
-            <label>mi</label>
-            <input 
-              placeholder="Number of miles" 
-              type="number" 
-              value={singleMiles || ""} 
-              onChange={(e)=>setSingleMiles(Number(e.target.value))}
+        <h1 className="calc-h2"> Single delivery profit </h1>
+        <div >
+          <input 
+            className="calc-input"
+            placeholder="Number of miles" 
+            type="number" 
+            value={singleMiles || ""} 
+            onChange={(e)=>setSingleMiles(Number(e.target.value))}
+          />
+          <div className="mui-slider-div">
+            <Slider
+              defaultValue={0}
+              aria-labelledby="discrete-slider-small-steps"
+              step={0.5}
+              marks
+              min={.5}
+              max={30}
+              value={singleMiles}
+              onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {
+                setSingleMiles(Number(value)); 
+                setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+                setMessageFunction();
+              }}
+              onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
+                setSingleMiles(Number(value));
+                setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+                setMessageFunction();
+              }}
+              valueLabelDisplay="auto"
             />
-        <Slider
-          defaultValue={0}
-          aria-labelledby="discrete-slider-small-steps"
-          step={0.5}
-          marks
-          min={.5}
-          max={30}
-          value={singleMiles}
-          onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            setSingleMiles(Number(value)); 
-            setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-            setMessageFunction();
-          }}
-          onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            setSingleMiles(Number(value));
-            setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-            setMessageFunction();
-          }}
-          valueLabelDisplay="auto"
-        />
+          </div>
         </div>
         <div>
-          <label>$</label>
           <input 
-            placeholder="singlePay" 
+            className="calc-input"
+            placeholder="Delivery pay out ($)" 
             type="number" 
             value={singlePay || ""} 
             onChange={(e)=>setSinglePay(Number(e.target.value))}
           />
-          <Slider
-          defaultValue={0}
-          aria-labelledby="discrete-slider-small-steps"
-          step={0.5}
-          marks
-          min={.5}
-          max={30}
-          value={singlePay}
-          onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            setSinglePay(Number(value));
-            setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-            setMessageFunction();
-          }}
-          onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            setSinglePay(Number(value));
-            setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-            setMessageFunction();
-          }}
-          valueLabelDisplay="auto"
-        />
+          <div className="mui-slider-div">
+            <input
+            type='range' 
+            defaultValue={0}
+            aria-labelledby="discrete-slider-small-steps"
+            step={0.5}
+            min={.5}
+            max={30}
+            value={singlePay}
+            // onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {
+            //   setSinglePay(Number(value));
+            //   setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+            //   setMessageFunction();
+            // }}
+            // onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
+            //   setSinglePay(Number(value));
+            //   setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+            //   setMessageFunction();
+            // }}
+            />
+          </div>
         </div> 
         <div>
-          <p>{singleMessage}</p>
+          <p>Status: {singleMessage}</p>
         </div>
         <div>
           <p>singlePay: ${singleAdjustedPay}</p>

@@ -2,15 +2,16 @@ body {
   margin: 0;
   color: dimgray; 
 }
-.calc-page { 
-  /* padding-right: 30px; 
-  padding-left: 30px;  */
-}
 
 .calc-headers { 
   text-align: center;
   background-color: grey;
   color: white
+}
+
+.calc-body { 
+  padding-right: 30px; 
+  padding-left: 30px;  
 }
 
 .calc-h1 { 
@@ -19,8 +20,15 @@ body {
   font-size: 3.5vh;
 }
 
-
 .calc-h2 { 
   font-size: 3vh;
   margin-top: 30px;
+}
+
+.mui-slider-div { 
+  width: 80%; 
+}
+
+.calc-input { 
+  height: 30px
 }
