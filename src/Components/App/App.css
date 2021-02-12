@@ -29,6 +29,10 @@ body {
   width: 80%; 
 }
 
+.calc-slider { 
+  width: 100%
+}
+
 .calc-input { 
-  height: 30px
+  width: 100%
 }

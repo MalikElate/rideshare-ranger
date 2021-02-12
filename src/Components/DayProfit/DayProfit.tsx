@@ -48,7 +48,7 @@ export const DoorDash: React.FC<Props> = (props) => {
       } else if ((5 >= singleMiles) && (singleMiles > 6)) {
         setSingleMessage('This dash is unprofitable');
       } else if ((6 < singleMiles) && (singleMiles <= 7)  && (singlePay > 18)){
-        setSingleMessage('This dash is unprofitable');
+      setSingleMessage('This dash is unprofitable');
         return "end function";
       } else if ((6 >= singleMiles) && (singleMiles > 7)) {
         setSingleMessage('This dash is unprofitable');
@@ -85,25 +85,19 @@ export const DoorDash: React.FC<Props> = (props) => {
             onChange={(e)=>setSingleMiles(Number(e.target.value))}
           />
           <div className="mui-slider-div">
-            <Slider
-              defaultValue={0}
-              aria-labelledby="discrete-slider-small-steps"
-              step={0.5}
-              marks
-              min={.5}
-              max={30}
-              value={singleMiles}
-              onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-                setSingleMiles(Number(value)); 
-                setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-                setMessageFunction();
-              }}
-              onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-                setSingleMiles(Number(value));
-                setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-                setMessageFunction();
-              }}
-              valueLabelDisplay="auto"
+            <input
+            className='calc-input'
+            type='range' 
+            aria-labelledby="discrete-slider-small-steps"
+            step={0.5}
+            min={.5}
+            max={30}
+            value={singleMiles || ""}
+            onChange={(e) => {
+              setSingleMiles(Number(e.target.value)); 
+              setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+              setMessageFunction();
+            }}
             />
           </div>
         </div>
@@ -118,22 +112,16 @@ export const DoorDash: React.FC<Props> = (props) => {
           <div className="mui-slider-div">
             <input
             type='range' 
-            defaultValue={0}
             aria-labelledby="discrete-slider-small-steps"
             step={0.5}
             min={.5}
             max={30}
-            value={singlePay}
-            // onChangeCommitted={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            //   setSinglePay(Number(value));
-            //   setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-            //   setMessageFunction();
-            // }}
-            // onChange={(event: React.ChangeEvent<{}>, value: number | number[]) => {
-            //   setSinglePay(Number(value));
-            //   setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
-            //   setMessageFunction();
-            // }}
+            value={singlePay || ""}
+            onChange={(e) => {
+              setSinglePay(Number(e.target.value));
+              setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+              setMessageFunction();
+            }}
             />
           </div>
         </div> 
