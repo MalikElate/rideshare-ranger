@@ -1,0 +1,28 @@
+.calc-page { 
+    display: flex; 
+    justify-content: center;
+    margin-left: 0px; 
+    padding: 0; 
+
+}
+
+.calc-h2 { 
+    font-size: 3vh;
+    margin-top: 30px;
+}
+
+.mui-slider-div { 
+    width: 80%; 
+}
+
+.calc-slider { 
+    width: 128%; 
+    max-width: 400px;
+    height: 50px;
+}
+
+.calc-input { 
+    width: 100%; 
+    max-width: 400px;
+    height: 40px;
+}

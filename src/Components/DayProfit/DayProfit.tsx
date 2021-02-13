@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { Slider } from '@material-ui/core';
 import { WeeklyProfit } from "../WeeklyProfit/WeeklyProfit"; 
 import { DailyProfitHeader } from './DayProfitHeader'; 
+import './DayProfit.css'; 
 
 interface Props { 
   companyName: string, 
@@ -18,22 +18,50 @@ export const DoorDash: React.FC<Props> = (props) => {
   }, []);
 
   const setMessageFunction = () => { 
-    if ((0 < singleMiles) && (singleMiles <= 2)  && (singlePay > 4)){
-        setSingleMessage('This dash is unprofitable');
+
+    if (singlePay <= 4.5){
+      setSingleMessage('This dash is unprofitable');
+      return; 
+    }
+    if ((singlePay >= 5) && (singleMiles < 3)){
+      setSingleMessage('This dash is profitable');
+      return; 
+    } else if((singlePay >= 5) && (singlePay < 7) && (singleMiles > 4)) { 
+      setSingleMessage('This dash is unprofitable');
+      return; 
+    }
+    switch (singlePay) {
+      case .5:
+        console.log('a > b'); 
+        break; 
+      case 1: 
+        console.log('a < b')
+        break; 
+      case 1.5: 
+        console.log('a === b')
+        break; 
+      case 2: 
+
     }
   }
   return (
+    <>
+    <DailyProfitHeader companyName={props.companyName}/>      
     <div className="calc-page">
-      <DailyProfitHeader companyName={props.companyName}/>      
       <div className="calc-body">
         <h1 className="calc-h2"> Single delivery profit </h1>
+        <label>Miles</label>
         <div >
           <input 
             className="calc-input"
             placeholder="Number of miles" 
             type="number" 
             value={singleMiles || ""} 
-            onChange={(e)=>setSingleMiles(Number(e.target.value))}
+            onChange={(e)=>{
+              setSingleMiles(Number(e.target.value)); 
+              setMessageFunction(); 
+              setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+            }}
           />
           <div className="mui-slider-div">
             <input
@@ -52,13 +80,18 @@ export const DoorDash: React.FC<Props> = (props) => {
             />
           </div>
         </div>
+        <label>Pay</label>
         <div>
           <input 
             className="calc-input"
             placeholder="Delivery pay out ($)" 
             type="number" 
             value={singlePay || ""} 
-            onChange={(e)=>setSinglePay(Number(e.target.value))}
+            onChange={(e)=>{
+              setSinglePay(Number(e.target.value)); 
+              setMessageFunction(); 
+              setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
+            }}
           />
           <div className="mui-slider-div">
             <input
@@ -77,12 +110,13 @@ export const DoorDash: React.FC<Props> = (props) => {
             />
           </div>
         </div> 
-        <p>Status: {singleMessage}</p>
-        <p>singlePay: ${singleAdjustedPay}</p>
-        <p> Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
+        <p>• Status: {singleMessage}</p>
+        <p>• SinglePay: ${singleAdjustedPay}</p>
+        <p>• Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
         <WeeklyProfit singleProfits={singleAdjustedPay}/>
       </div>
     </div>
+    </>
   );
 }
 
