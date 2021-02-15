@@ -13,35 +13,24 @@ export const DoorDash: React.FC<Props> = (props) => {
   const [singleAdjustedPay, setSingleAdjustedPay] = useState<number>(0);
   const [singleMessage, setSingleMessage] = useState<string>("");
 
-  useEffect(() => {
-    setMessageFunction(); 
-  }, []);
-
   const setMessageFunction = () => { 
-
-    if (singlePay <= 4.5){
+    // any dash less than 5 dollars pay is unprofitable
+    if (singlePay < 5) {
       setSingleMessage('This dash is unprofitable');
       return; 
     }
-    if ((singlePay >= 5) && (singleMiles < 3)){
+    // any dash further than 14 miles is unprofitable
+    if (singleMiles > 14) {
+      setSingleMessage('This dash is unprofitable');
+      return; 
+    }
+    if (singlePay >= 5 && singleMiles < 3) {
       setSingleMessage('This dash is profitable');
       return; 
-    } else if((singlePay >= 5) && (singlePay < 7) && (singleMiles > 4)) { 
-      setSingleMessage('This dash is unprofitable');
+    } 
+    if (singlePay >= 5 && singleMiles < 3) { 
+      setSingleMessage('This dash is profitable');
       return; 
-    }
-    switch (singlePay) {
-      case .5:
-        console.log('a > b'); 
-        break; 
-      case 1: 
-        console.log('a < b')
-        break; 
-      case 1.5: 
-        console.log('a === b')
-        break; 
-      case 2: 
-
     }
   }
   return (
@@ -49,14 +38,15 @@ export const DoorDash: React.FC<Props> = (props) => {
     <DailyProfitHeader companyName={props.companyName}/>      
     <div className="calc-page">
       <div className="calc-body">
+        <div className="calc-main">
         <h1 className="calc-h2"> Single delivery profit </h1>
-        <label>Miles</label>
+        <h3>Miles</h3>
         <div >
           <input 
             className="calc-input"
             placeholder="Number of miles" 
             type="number" 
-            value={singleMiles || ""} 
+            value={singleMiles} 
             onChange={(e)=>{
               setSingleMiles(Number(e.target.value)); 
               setMessageFunction(); 
@@ -71,7 +61,7 @@ export const DoorDash: React.FC<Props> = (props) => {
             step={0.5}
             min={.5}
             max={30}
-            value={singleMiles || ""}
+            value={singleMiles}
             onChange={(e) => {
               setSingleMiles(Number(e.target.value)); 
               setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
@@ -80,13 +70,13 @@ export const DoorDash: React.FC<Props> = (props) => {
             />
           </div>
         </div>
-        <label>Pay</label>
+        <h3>Pay</h3>
         <div>
           <input 
             className="calc-input"
             placeholder="Delivery pay out ($)" 
             type="number" 
-            value={singlePay || ""} 
+            value={singlePay} 
             onChange={(e)=>{
               setSinglePay(Number(e.target.value)); 
               setMessageFunction(); 
@@ -101,7 +91,7 @@ export const DoorDash: React.FC<Props> = (props) => {
             step={0.5}
             min={.5}
             max={30}
-            value={singlePay || ""}
+            value={singlePay}
             onChange={(e) => {
               setSinglePay(Number(e.target.value));
               setSingleAdjustedPay(Number(Number(singlePay - (singleMiles/25 * 2.2)).toFixed(2)));
@@ -114,6 +104,7 @@ export const DoorDash: React.FC<Props> = (props) => {
         <p>• SinglePay: ${singleAdjustedPay}</p>
         <p>• Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
         <WeeklyProfit singleProfits={singleAdjustedPay}/>
+        </div>
       </div>
     </div>
     </>

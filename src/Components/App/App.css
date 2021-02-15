@@ -11,6 +11,9 @@ body {
 }
 
 .calc-body { 
+  display: flex; 
+  justify-content: flex-end;
+  flex-direction: column; 
   margin-top: 20px; 
   padding-right: 20px; 
   padding-left: 20px;  
@@ -20,13 +23,14 @@ body {
   width: 80%;
 }
 
-.calc-h1 { 
+.calc-header-h2 { 
   margin: 0; 
   padding: 10px; 
-  font-size: 3.5vh;
+  font-size: 1.25em;
 }
 
 .calc-p { 
   margin: 0; 
   padding: 10px; 
+  font-size: .75em;
 }
