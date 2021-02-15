@@ -5,7 +5,7 @@ import './Nav.css'
 export const NavBar: React.FC = () => {
   return (
     <header className='nav-header'>
-      <img src='../images/final-logo-with-text.png' alt='logo' className='nav-logo'></img>
+      <h1 className='nav-h1'>RIDESHARE RANGER</h1>
       <CompanyMenu/>
     </header>
   );

@@ -4,6 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import './Nav.css'; 
+import { AiOutlineMenu } from 'react-icons/ai'; 
 
 const CompanyMenu: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -19,7 +20,7 @@ const CompanyMenu: React.FC = () => {
   return (
     <>
     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-      More Calculators 
+      <AiOutlineMenu size="2em"/>
     </Button>
     <Menu
       id="simple-menu"
