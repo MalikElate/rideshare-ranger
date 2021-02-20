@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![REPO SIZE](https://img.shields.io/github/repo-size/MalikElate/rideshare-ranger.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/MalikElate/rideshare-ranger.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/MalikElate/rideshare-ranger.svg?style=social)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rideshare Ranger
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+_Duration: 2 Week Sprint_
 
-### `npm start`
+A tool for ride-share drivers to quickly determine the profitability of a dash, improving their bottom line. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To see the fully functional site, please visit: [Demo](https://www.ridepartranger.com/doordash)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+Link to software that is required to install the app (e.g. node).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/en/)
+- Node Package Manager 
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Create a database named react_student_list,
+2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+3. Open up your editor of choice and run an `npm install`
+4. Run `npm run server` in your terminal
+5. Run `npm run client` in your terminal
+6. The `npm run client` command will open up a new browser tab for you!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Enter the candidates GitHub username to add them to the list of prospects
+2. Click get details to view a candidates' details 
+3. Remove a candidate from the list by clicking remove candidate
 
-### `npm run eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Typescript
+2. React
+3. JavaScript 
+4. Node + Express
+5. React Bootstrap 
+6. CSS 
+7. HTML 
+8. GitHub public API
+9. PostgreSQL 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Support
+If you have suggestions or issues, please email me at [malik.e1955@gmail.com](www.google.com)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- ## Screen Shot
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Stretch Goals Wireframe](wireframes/githubataglance.png) -->

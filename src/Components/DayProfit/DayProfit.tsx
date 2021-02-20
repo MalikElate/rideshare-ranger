@@ -14,24 +14,62 @@ export const DoorDash: React.FC<Props> = (props) => {
   const [singleMessage, setSingleMessage] = useState<string>("");
 
   const setMessageFunction = () => { 
-    // any dash less than 5 dollars pay is unprofitable
-    if (singlePay < 5) {
-      setSingleMessage('This dash is unprofitable');
-      return; 
+    switch (singleMiles)  { 
+      case .5:  
+      case 1: 
+        { 
+          console.log('.5 or 1'); 
+          break; 
+        }
+      case 1.5:  
+      case 2: 
+        { 
+          console.log('1.5 or 2'); 
+          break; 
+        }
+      case 2.5: 
+      case 3:
+         { 
+           console.log('2.5 or 3'); 
+           break; 
+         } 
+      case 3:
+      case 3.5:
+         { 
+           console.log('3 or 3.5'); 
+           break; 
+         }
+      case 4:
+      case 4.5:
+         { 
+           console.log('4 or 4.5'); 
+           break; 
+         }
+      case 5: 
+      case 5.5: 
+        {   
+          console.log('5 or 5.5'); 
+          break; 
+        }
     }
-    // any dash further than 14 miles is unprofitable
-    if (singleMiles > 14) {
-      setSingleMessage('This dash is unprofitable');
-      return; 
-    }
-    if (singlePay >= 5 && singleMiles < 3) {
-      setSingleMessage('This dash is profitable');
-      return; 
-    } 
-    if (singlePay >= 5 && singleMiles < 3) { 
-      setSingleMessage('This dash is profitable');
-      return; 
-    }
+    // // any dash less than 5 dollars pay is unprofitable
+    // if (singlePay < 5) {
+    //   setSingleMessage('This dash is unprofitable');
+    //   return; 
+    // }
+    // // any dash further than 14 miles is unprofitable
+    // if (singleMiles > 14) {
+    //   setSingleMessage('This dash is unprofitable');
+    //   return; 
+    // }
+    // if (singlePay >= 5 && singleMiles < 3) {
+    //   setSingleMessage('This dash is profitable');
+    //   return; 
+    // } 
+    // if (singlePay >= 5 && singleMiles < 3) { 
+    //   setSingleMessage('This dash is profitable');
+    //   return; 
+    // }
   }
   return (
     <>
