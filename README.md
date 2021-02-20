@@ -22,12 +22,10 @@ Link to software that is required to install the app (e.g. node).
 
 ## Installation
 
-1. Create a database named react_student_list,
-2. The queries in the `tables.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
-3. Open up your editor of choice and run an `npm install`
-4. Run `npm run server` in your terminal
-5. Run `npm run client` in your terminal
-6. The `npm run client` command will open up a new browser tab for you!
+1. Open up your editor of choice and run an `npm install`
+2. Run `npm run server` in your terminal
+3. Run `npm run client` in your terminal
+4. The `npm run client` command will open up a new browser tab for you!
 
 ## Usage
 
