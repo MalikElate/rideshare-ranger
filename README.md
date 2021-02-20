@@ -42,8 +42,8 @@ Link to software that is required to install the app (e.g. node).
 5. React Bootstrap 
 6. CSS 
 7. HTML 
-8. GitHub public API
-9. PostgreSQL 
+8. Amazon Web Services 
+9. Google Domains
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
