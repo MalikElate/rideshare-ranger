@@ -171,9 +171,9 @@ export const DoorDash: React.FC<Props> = (props) => {
           </div>
         </div> 
         <p>• Status: {singleMessage}</p>
-        <p>• SinglePay: ${singleAdjustedPay}</p>
-        <p>• Roundtrip time: {singleMiles>0? 15+singleMiles*6 : 0} minutes</p>
-        <WeeklyProfit singleProfits={singleAdjustedPay}/>
+        <p>• Pay after gas and car depreciation: ${singleAdjustedPay}</p>
+        <p>• Roundtrip time: {singleMiles>0? (15+singleMiles*6).toFixed(2) : 0} minutes</p>
+        <WeeklyProfit singleProfits={singleAdjustedPay} singleMiles={singleMiles} singleTime={singleMiles>0? 15+singleMiles*6 : 0}/>
         </div>
       </div>
     {/* </div> */}
