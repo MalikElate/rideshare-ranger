@@ -26,7 +26,7 @@ export const DoorDash: React.FC<Props> = (props) => {
       case 1: 
       case 1.5:  
       case 2: 
-        if(singlePay >= 5.5) { 
+        if(pay >= 5.5) { 
           setSingleMessage('this dash is worth it'); 
         } else { 
           setSingleMessage('this dash is a waste of time'); 
@@ -34,7 +34,7 @@ export const DoorDash: React.FC<Props> = (props) => {
         break; 
       case 2.5: 
       case 3:
-        if(singlePay >= 7) { 
+        if(pay >= 7) { 
           setSingleMessage('this dash is worth it'); 
         } else { 
           setSingleMessage('this dash is a waste of time'); 
@@ -42,7 +42,7 @@ export const DoorDash: React.FC<Props> = (props) => {
         break; 
       case 3.5:
       case 4:
-        if(singlePay >= 8) { 
+        if(pay >= 8) { 
           setSingleMessage('this dash is worth it'); 
         } else { 
           setSingleMessage('this dash is a waste of time'); 
@@ -60,7 +60,7 @@ export const DoorDash: React.FC<Props> = (props) => {
       case 5:
       case 5.5: 
       case 6:
-        if(singlePay >= 12) { 
+        if(pay >= 12) { 
           setSingleMessage('this dash is worth it'); 
         } else { 
           setSingleMessage('this dash is a waste of time'); 
@@ -70,7 +70,7 @@ export const DoorDash: React.FC<Props> = (props) => {
       case 7:
       case 7.5:
       case 8:
-        if(singlePay >= 15) { 
+        if(pay >= 15) { 
           setSingleMessage('this dash is worth it'); 
         } else { 
           setSingleMessage('this dash is a waste of time'); 
@@ -96,7 +96,7 @@ export const DoorDash: React.FC<Props> = (props) => {
       case 14:
       case 14.5:
       case 15:
-        if(singlePay >= 27) { 
+        if(pay >= 25) { 
           setSingleMessage('this dash is worth it'); 
         } else { 
           setSingleMessage('this dash is a waste of time'); 
@@ -111,7 +111,7 @@ export const DoorDash: React.FC<Props> = (props) => {
     <>
     <DailyProfitHeader companyName={props.companyName}/>      
     <div className="calc-page">
-      <div className="calc-body">
+      {/* <div className="calc-body"> */}
         <div className="calc-main">
         <h1 className="calc-h2"> Single delivery profit </h1>
         <h3>Miles</h3>
@@ -176,7 +176,7 @@ export const DoorDash: React.FC<Props> = (props) => {
         <WeeklyProfit singleProfits={singleAdjustedPay}/>
         </div>
       </div>
-    </div>
+    {/* </div> */}
     </>
   );
 }
